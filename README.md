@@ -47,23 +47,25 @@ A modern Point of Sale (POS) system designed for school canteens. This applicati
 
 # 🛠 Tech Stack
 
-## Frontend
+<p align="center">
 
-- React
-- Vite
-- Tailwind CSS
-- Axios
-- Headless UI
-- Heroicons
+![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 
-## Backend
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite)
 
-- Node.js
-- Express.js
-- Prisma ORM
-- PostgreSQL
-- PDFKit
-- Baileys (WhatsApp API)
+![Express](https://img.shields.io/badge/Express.js-000000?logo=express)
+
+![Prisma](https://img.shields.io/badge/Prisma-ORM-2D3748?logo=prisma)
+
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql)
+
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38BDF8?logo=tailwindcss)
+
+![Baileys](https://img.shields.io/badge/Baileys-25D366?logo=whatsapp)
+
+![PDFKit](https://img.shields.io/badge/PDF-PDFKit-red)
+
+</p>
 
 ---
 
