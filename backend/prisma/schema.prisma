@@ -1,0 +1,71 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String
+  createdAt DateTime @default(now())
+
+  orders    Order[]
+}
+
+enum MenuCategory {
+  FOOD
+  DRINK
+}
+
+enum MenuType {
+  NASI
+  GORENG
+}
+
+model Menu {
+  id         Int      @id @default(autoincrement())
+  name       String
+  price      Decimal  @db.Decimal(10,2)
+
+  category   MenuCategory @default(FOOD)
+
+  type       MenuType?
+
+  createdAt  DateTime @default(now())
+
+  orderItems OrderItem[]
+}
+model Order {
+  id         Int      @id @default(autoincrement())
+
+  receiptNo  String   @unique
+
+  teacherId  Int
+
+  total      Decimal  @db.Decimal(10,2)
+
+  isSent     Boolean  @default(false)
+
+  createdAt  DateTime @default(now())
+
+  teacher User @relation(fields: [teacherId], references: [id])
+
+  items OrderItem[]
+}
+
+model OrderItem {
+  id         Int      @id @default(autoincrement())
+  orderId    Int
+  menuId     Int
+
+  quantity   Int
+  unitPrice  Decimal @db.Decimal(10,2)
+  subtotal   Decimal @db.Decimal(10,2)
+
+  order Order @relation(fields: [orderId], references: [id])
+  menu  Menu  @relation(fields: [menuId], references: [id])
+}
