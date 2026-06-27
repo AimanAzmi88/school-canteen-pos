@@ -129,8 +129,41 @@ npm run dev
 
 # 📸 Screenshots
 
-Coming Soon
+# 📸 Screenshots
 
+## 🛒 POS Screen
+
+![POS](assets/pos.png)
+
+---
+
+## 🧾 Pending Bill
+
+![Pending Bill](assets/pending-bill.png)
+
+---
+
+## 📜 Order History
+
+![Order History](assets/order-history.png)
+
+---
+
+## 👨‍🏫 Teacher Management
+
+![Teacher Management](assets/teacher-management.png)
+
+---
+
+## 🍛 Menu Management
+
+![Menu Management](assets/menu-management.png)
+
+---
+
+## ➕ Add Menu
+
+![Add Menu](assets/add-menu.png)
 ---
 
 # 🗺 Roadmap
