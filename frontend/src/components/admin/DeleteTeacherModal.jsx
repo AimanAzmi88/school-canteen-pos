@@ -1,6 +1,6 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import toast from "react-hot-toast";
-import api from "../../api/api";
+import { deleteUser } from "../../api/user.api";
 
 function DeleteTeacherModal({
   open,
@@ -12,9 +12,9 @@ function DeleteTeacherModal({
     if (!teacher) return;
 
     try {
-      await api.delete(`/users/${teacher.id}`);
+      await deleteUser(teacher.id)
 
-      toast.success("Teacher deleted successfully");
+      toast.success("Guru berjaya dipadam");
 
       onClose();
 
@@ -24,7 +24,7 @@ function DeleteTeacherModal({
       console.error(err?.response?.data?.message);
 
       toast.error(
-        err?.response?.data?.message || "Delete failed"
+        err?.response?.data?.message || "Gagal memadam"
       );
     }
   };

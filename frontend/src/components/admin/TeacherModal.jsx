@@ -1,7 +1,7 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import api from "../../api/api";
+import { createUser, updateUser } from "../../api/user.api";
 
 function TeacherModal({
   open,
@@ -47,13 +47,13 @@ function TeacherModal({
       };
 
       if (isEdit) {
-        await api.put(`/users/${teacher.id}`, payload);
+        await updateUser(teacher.id, payload);
 
-        toast.success("Teacher updated successfully");
+        toast.success("Guru berjaya dikemaskini");
       } else {
-        await api.post("/users", payload);
+        await createUser(payload);
 
-        toast.success("Teacher added successfully");
+        toast.success("Guru bejaya ditambah");
       }
 
       onSuccess();

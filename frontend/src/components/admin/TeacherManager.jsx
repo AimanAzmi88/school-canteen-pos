@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../api/api";
+import { getUsers } from "../../api/user.api";
 
 import {
   PlusIcon,
@@ -27,7 +27,7 @@ function TeacherManager() {
     try {
       setLoading(true);
 
-      const res = await api.get("/users");
+      const res = await getUsers()
 
       setTeachers(res.data.data);
 
@@ -46,9 +46,9 @@ function TeacherManager() {
 
         <div>
 
-          <h2 className="text-2xl font-bold">
+          {/* <h2 className="text-2xl font-bold">
             Teacher
-          </h2>
+          </h2> */}
 
           <p className="text-slate-500">
             Manage teacher
@@ -76,7 +76,7 @@ function TeacherManager() {
           "
         >
           <PlusIcon className="h-5 w-5" />
-          Add Teacher
+          Tambah guru
         </button>
 
       </div>
@@ -88,13 +88,13 @@ function TeacherManager() {
         {loading ? (
 
           <div className="rounded-2xl bg-white p-8 text-center shadow-sm">
-            Loading...
+            Memuatkan...
           </div>
 
         ) : teachers.length === 0 ? (
 
           <div className="rounded-2xl bg-white p-8 text-center shadow-sm">
-            No Teacher
+            Tiada guru
           </div>
 
         ) : (

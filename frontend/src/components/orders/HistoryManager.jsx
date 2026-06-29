@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../api/api";
+import { getOrderHistory } from "../../api/order.api";
 
 import HistorySearch from "./HistorySearch";
 import HistoryCard from "./HistoryCard";
@@ -18,38 +18,30 @@ function HistoryManager() {
     fetchHistory();
   }, []);
 
-  const fetchHistory = async () => {
-    try {
-      setLoading(true);
+const fetchHistory = async () => {
+  try {
+    setLoading(true);
 
-      let url = "/orders/history";
+    const params = {};
 
-      const params = [];
-
-      if (search.trim()) {
-        params.push(
-          `search=${encodeURIComponent(search)}`
-        );
-      }
-
-      if (date) {
-        params.push(`date=${date}`);
-      }
-
-      if (params.length) {
-        url += `?${params.join("&")}`;
-      }
-
-      const res = await api.get(url);
-
-      setOrders(res.data.data);
-
-    } catch (err) {
-      console.error(err);
-    } finally {
-      setLoading(false);
+    if (search.trim()) {
+      params.search = search.trim();
     }
-  };
+
+    if (date) {
+      params.date = date;
+    }
+
+    const res = await getOrderHistory(params);
+
+    setOrders(res.data.data);
+
+  } catch (err) {
+    console.error(err);
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div>

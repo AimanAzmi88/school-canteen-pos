@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import api from "../api/api";
+import api from "../api/axios";
 import toast from "react-hot-toast";
 
 import AppLayout from "../layouts/AppLayout";
@@ -11,6 +11,8 @@ import SelectedList from "../components/home/SelectedList";
 import FoodGrid from "../components/home/FoodGrid";
 import FoodModal from "../components/home/FoodModal";
 import ActionButtons from "../components/home/ActionButtons";
+import { getMenus } from "../api/menu.api";
+import { getUsers } from "../api/user.api";
 
 function Home() {
   const [foods, setFoods] = useState([]);
@@ -31,7 +33,7 @@ function Home() {
 
   const fetchFoods = async () => {
     try {
-      const res = await api.get("/menus");
+      const res = await getMenus()
       setFoods(res.data.data);
     } catch (err) {
       console.error(err);
@@ -41,7 +43,7 @@ function Home() {
 
   const fetchTeachers = async () => {
     try {
-      const res = await api.get("/users");
+      const res = await getUsers()
       setTeachers(res.data.data);
     } catch (err) {
       console.error(err);

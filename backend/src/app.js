@@ -5,32 +5,17 @@ import userRoutes from "./routes/user.routes.js";
 import menuRoutes from "./routes/menu.routes.js";
 import orderRoutes from "./routes/order.routes.js";
 import { connectWhatsapp } from "./config/whatsapp.js";
-// import { sendMessage } from "./services/whatsapp.service.js";
+import apiRoutes from "./routes/index.js"
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/orders", orderRoutes);
-app.use("/menus", menuRoutes);
-app.use("/users", userRoutes);
-
+app.use("/api", apiRoutes)
 connectWhatsapp();
 
-// app.get("/test", async (req, res) => {
 
-//     await sendMessage(
-//         "601130133441",
-//         "🔥 Hello dari School POS!"
-//     );
-
-//     res.json({
-//         success: true
-//     });
-
-// });
-
-app.get("/", async (req, res) => {
+app.get("/api", async (req, res) => {
   try {
     await prisma.$queryRaw`SELECT 1`;
 

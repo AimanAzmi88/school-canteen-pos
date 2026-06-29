@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import api from "../../api/api";
+import { getOrders } from "../../api/order.api";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
 
 import OrderCard from "./OrderCard";
@@ -22,7 +22,7 @@ function OrderManager() {
     try {
       setLoading(true);
 
-      const res = await api.get("/orders");
+      const res = await getOrders()
 
       setOrders(res.data.data);
 

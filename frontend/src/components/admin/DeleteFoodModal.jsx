@@ -1,6 +1,6 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import toast from "react-hot-toast";
-import api from "../../api/api";
+import { deleteMenu } from "../../api/menu.api";
 
 function DeleteFoodModal({
   open,
@@ -12,7 +12,7 @@ function DeleteFoodModal({
     if (!food) return;
 
     try {
-      await api.delete(`/menus/${food.id}`);
+      await deleteMenu(food.id);
 
       toast.success("Berjaya dipadam");
 

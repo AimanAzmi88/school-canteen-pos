@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import api from "../../api/api";
+import { getMenus } from "../../api/menu.api";
 import {
   PlusIcon,
   PencilSquareIcon,
@@ -30,7 +30,7 @@ function FoodManager({ category, type }) {
         params.type = type;
       }
 
-      const res = await api.get("/menus", { params });
+      const res = await getMenus(params)
       setFoods(res.data.data);
     } catch (err) {
       console.error(err);

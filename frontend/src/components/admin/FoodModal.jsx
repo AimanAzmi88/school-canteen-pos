@@ -1,7 +1,7 @@
 import { Dialog, DialogPanel, DialogTitle } from "@headlessui/react";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import api from "../../api/api";
+import { updateMenu, createMenu, } from "../../api/menu.api";
 
 function FoodModal({
   open,
@@ -61,10 +61,10 @@ function FoodModal({
       };
 
       if (isEdit) {
-        await api.put(`/menus/${food.id}`, payload);
+        await updateMenu(food.id, payload);
         toast.success("Menu berjaya dikemas kini");
       } else {
-        await api.post("/menus", payload);
+        await createMenu(payload);
         toast.success("Menu berjaya ditambah");
       }
 
